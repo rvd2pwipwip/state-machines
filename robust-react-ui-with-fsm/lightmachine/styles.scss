@@ -1,0 +1,78 @@
+$states: green yellow red;
+$colors: (
+  green: #34ca4a,
+  yellow: yellow,
+  red: red
+);
+
+@each $state in $states {
+  [data-state="#{$state}"] [data-show="#{$state}"] {
+    opacity: 1;
+  }
+
+  [data-show="#{$state}"] {
+    color: map-get($colors, $state);
+  }
+}
+
+#traffic-light {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+}
+
+.light {
+  opacity: 0.3;
+  width: 5vmin;
+  height: 5vmin;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 1vmin currentColor;
+  transition: opacity 0.3s;
+}
+
+#timer {
+  appearance: none;
+  background: #fdfdfd;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 1vmin;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 2vmin;
+  margin-top: 2rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  position: relative;
+}

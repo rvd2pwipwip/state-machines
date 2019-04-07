@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Robust React UI with FSM</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <h1>
+        <a
+          href="https://css-tricks.com/robust-react-user-interfaces-with-finite-state-machines/"
+          target="_blank"
+          >Robust React User Interfaces with Finite State Machines</a
+        >
+      </h1>
+    </div>
+    <div id="traffic-light" data-state="green">
+      <div class="light" data-show="red"></div>
+      <div class="light" data-show="yellow"></div>
+      <div class="light" data-show="green"></div>
+    </div>
+
+    <button id="timer" type="button">Trigger timer</button>
+    <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
+
+    <!-- Optional: XState interpreter -->
+    <script src="https://unpkg.com/xstate@4/dist/xstate.interpreter.js"></script>
+    <script src="lightmachine.js"></script>
+  </body>
+</html>

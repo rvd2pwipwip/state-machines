@@ -1,0 +1,112 @@
+[data-state="green"] [data-show="green"] {
+  opacity: 1;
+}
+
+[data-show="green"] {
+  color: #34ca4a;
+}
+
+[data-state="yellow"] [data-show="yellow"] {
+  opacity: 1;
+}
+
+[data-show="yellow"] {
+  color: yellow;
+}
+
+[data-state="red"] [data-show="red"] {
+  opacity: 1;
+}
+
+[data-show="red"] {
+  color: red;
+}
+
+#traffic-light {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vh;
+}
+
+.light {
+  opacity: 0.3;
+  width: 5vmin;
+  height: 5vmin;
+  border-radius: 50%;
+  background-color: currentColor;
+  -webkit-box-shadow: 0 0 1vmin currentColor;
+          box-shadow: 0 0 1vmin currentColor;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+#timer {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #fdfdfd;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 1vmin;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 2vmin;
+  margin-top: 2rem;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+#timer:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+#timer:focus {
+  outline: none;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #121212;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+/*# sourceMappingURL=styles.css.map */
