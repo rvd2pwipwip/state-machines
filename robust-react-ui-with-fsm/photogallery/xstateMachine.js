@@ -3,18 +3,25 @@ const galleryMachine = Machine(
   {
     id: "gallery",
     initial: "start",
+    context: {
+      canSearch: true
+    },
     states: {
       start: {
         on: {
           SEARCH: {
             target: "loading",
+            cond: "validSearch",
             actions: ["search"] //transition action
           }
         }
       },
       loading: {
         on: {
-          SEARCH_SUCCESS: "gallery",
+          SEARCH_SUCCESS: {
+            target: "gallery"
+            // actions: "displayGallery"
+          },
           SEARCH_FAILURE: "error",
           CANCEL_SEARCH: "gallery"
         }
@@ -23,6 +30,7 @@ const galleryMachine = Machine(
         on: { SEARCH: "loading" }
       },
       gallery: {
+        onEntry: ["dataInGallery", "displayGallery"],
         on: {
           SEARCH: "loading",
           SELECT_PHOTO: "photo"
@@ -38,11 +46,17 @@ const galleryMachine = Machine(
     actions: {
       search: () => {
         console.log("searching...");
+      },
+      dataInGallery: () => {
+        console.log("Putting data in App state.items");
+      },
+      displayGallery: () => {
+        console.log("displaying gallery");
       }
     },
     guards: {
-      validSearch: (ctx, event) => {
-        return ctx.canSearch && event;
+      validSearch: ctx => {
+        return ctx.canSearch;
       }
     }
   }
