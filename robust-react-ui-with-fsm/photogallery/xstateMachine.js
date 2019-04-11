@@ -1,3 +1,5 @@
+import { interpret } from "xstate";
+
 // xstate machine
 const galleryMachine = Machine(
   {
@@ -32,7 +34,11 @@ const galleryMachine = Machine(
       gallery: {
         onEntry: ["dataInGallery", "displayGallery"],
         on: {
-          SEARCH: "loading",
+          SEARCH: {
+            target: "loading",
+            cond: "validSearch",
+            actions: ["search"] //transition action
+          },
           SELECT_PHOTO: "photo"
         }
       },
@@ -55,9 +61,21 @@ const galleryMachine = Machine(
       }
     },
     guards: {
-      validSearch: ctx => {
-        return ctx.canSearch;
+      validSearch: (ctx, event) => {
+        return ctx.canSearch && event.query.length > 0;
       }
     }
   }
 );
+
+const searchService = interpret(galleryMachine)
+  .onTransition(state => console.log(state.value))
+  .start();
+
+// events
+
+// searchService.send({ type: "SEARCH", query: "" });
+// // => 'start'
+
+searchService.send({ type: "SEARCH", query: "something" });
+// => 'searching'
