@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import galleryMachine from "./galleryMachine.js";
+import galleryMachine, { initialState } from "./galleryMachine";
 import fetchJsonp from "fetch-jsonp";
+// import "./styles.scss";
 
 class App extends Component {
   state = {
-    gallery: "start", // current finite state
+    gallery: initialState, // current finite state
     query: "",
     items: []
   };
@@ -120,6 +121,7 @@ class App extends Component {
         ) : (
           this.state.items.map((item, i) => (
             <img
+              alt={this.state.query}
               src={item.media.m}
               className="ui-item"
               style={{ "--i": i }}
@@ -144,7 +146,11 @@ class App extends Component {
         className="ui-photo-detail"
         onClick={() => this.transition({ type: "EXIT_PHOTO" })}
       >
-        <img src={this.state.photo.media.m} className="ui-photo" />
+        <img
+          alt={this.state.query}
+          src={this.state.photo.media.m}
+          className="ui-photo"
+        />
       </section>
     );
   }

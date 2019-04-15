@@ -21,4 +21,6 @@ const galleryMachine = {
   }
 };
 
+export const initialState = "start";
+
 export default galleryMachine;

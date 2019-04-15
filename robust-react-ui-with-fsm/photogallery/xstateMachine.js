@@ -47,7 +47,7 @@ const galleryMachine = Machine(
       }
     }
   },
-  // machine options
+  // machine options as 2nd argument of Machine()
   {
     actions: {
       search: () => {
@@ -68,6 +68,7 @@ const galleryMachine = Machine(
   }
 );
 
+// interpreter
 const searchService = interpret(galleryMachine)
   .onTransition(state => console.log(state.value))
   .start();
