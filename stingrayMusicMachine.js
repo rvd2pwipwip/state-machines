@@ -1,5 +1,5 @@
 const welcomeMachine = Machine({
-  key: "Stingray Music",
+  key: "Stingray Music Welcome",
   initial: "launch",
   states: {
     launch: {
